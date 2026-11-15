@@ -1,0 +1,44 @@
+{
+  "ts": "2026-11-15T18:42:14-0500",
+  "wave": 233,
+  "phase": "evolve-boot-plan",
+  "redox_principle": {
+    "oxidation": "UEFI hides settings, strips capability, sells you half a machine",
+    "reduction": "IFR extraction reduces the hidden to visible, setup_var.efi writes it back",
+    "rust": "setup_var.efi is Rust. Redox IS Rust. The chemical and the code.",
+    "cycle": "Each reboot is a redox cycle \u2014 oxidize (read), reduce (write), verify"
+  },
+  "mobo_enumeration": {
+    "target": "ASUS ROG STRIX X870E-E GAMING WIFI",
+    "bios": "1401 (2025-05-06)",
+    "method": "UEFITool extract \u2192 IFRExtractor-RS \u2192 full offset map",
+    "goal": "Like Akida \u2014 enumerate every bell and whistle the silicon supports",
+    "varstores": [
+      "Setup",
+      "AmdSetup",
+      "AMD_PBS_SETUP",
+      "CbsSetupData",
+      "AmdCbsConfig"
+    ],
+    "expected": "1000+ hidden settings, full PCIe/NVMe/CPU/GPU control"
+  },
+  "boot_evolution": {
+    "manual_transmission": "Current: Kevin picks UMAF/modGRUB, manually changes settings",
+    "semi_auto": "Next: setup_var.efi with known offsets, PIN 579163 authenticates",
+    "pi_clutch": "Future: Gaia reads IFR map, decides what to change, writes on reboot",
+    "full_auto": "Eventually: biomeOS + toadStool discover mobo capabilities, sourDough optimizes across reboot cycles"
+  },
+  "testing": {
+    "benchScale": "Boot cycle testing, pre/post comparison, performance benchmarks",
+    "agentReagents": "sourDough persistence, ZK facts, IFR offset catalog",
+    "ci_cd": "Each boot cycle = CI run. Pre-reboot = commit. Post-reboot = verify. Diff = test results.",
+    "bingoCube": "Coordinate across gates \u2014 northGate writes, eastGate verifies, sporeGate absorbs"
+  },
+  "io_trainer": {
+    "pattern": "Each reboot trains the IO subsystem",
+    "inputs": "UEFI settings (58 WMI + N IFR hidden)",
+    "outputs": "Hardware state (cores, threads, NVMe, GPU, ReBAR)",
+    "loss_function": "diff(expected, actual) \u2192 sourDough evolve",
+    "epochs": "reboot cycles"
+  }
+}
